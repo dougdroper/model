@@ -72,7 +72,7 @@ module Lotus
           #
           # @since 0.1.0
           def all
-            Lotus::Utils::Kernel.Array(run)
+            Array(run).flatten.compact
           end
 
           # Adds a SQL `WHERE` condition.

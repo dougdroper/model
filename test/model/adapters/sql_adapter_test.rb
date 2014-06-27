@@ -258,8 +258,8 @@ describe Lotus::Model::Adapters::SqlAdapter do
       @adapter.clear(collection)
     end
 
-    let(:user1) { TestUser.new(name: 'L',  age: '32') }
-    let(:user2) { TestUser.new(name: 'MG', age: 31) }
+    let(:user1) { TestUser.new(id: 1, name: 'L',  age: '32') }
+    let(:user2) { TestUser.new(id: 2, name: 'MG', age: 31) }
 
     describe 'where' do
       describe 'with an empty collection' do
@@ -421,11 +421,11 @@ describe Lotus::Model::Adapters::SqlAdapter do
           @adapter.create(collection, user3)
         end
 
-        let(:user1) { TestUser.new(name: 'L', age: 32) }
-        let(:user3) { TestUser.new(name: 'S') }
+        let(:user1) { TestUser.new(id: 1, name: 'L', age: 32) }
+        let(:user3) { TestUser.new(id: 3, name: 'S') }
         let(:users) { [user1, user2, user3] }
 
-        it 'returns the selected columnts from all the records' do
+        it 'returns the selected columns from all the records' do
           query = Proc.new {
             select(:age)
           }

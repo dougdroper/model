@@ -128,5 +128,22 @@ describe Lotus::Entity do
     it 'returns false if they have different class' do
       @book1.wont_equal @car
     end
+
+    it 'returns empty array when subtracting two equal entities' do
+      ([@book1] - [@book2]).must_equal []
+    end
+
+    it 'returns non empty array when subtracting two non equal entities' do
+      ([@book1, @book3] - [@book2]).must_equal [@book3]
+    end
+
+    it 'returns uniq entities' do
+      ([@book1, @book2].uniq).must_equal [@book1]
+    end
+
+    it 'can be used as a hash reference' do
+      hash = {Book.new => "test"}
+      hash[Book.new].must_equal "test"
+    end
   end
 end

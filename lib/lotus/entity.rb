@@ -146,6 +146,16 @@ module Lotus
       self.class == other.class &&
          self.id == other.id
     end
+    alias :eql? :==
+
+    # Overrides the Ruby hash method
+    #
+    # Two arrays with the same entities will have
+    # the same hash code (and will compare using eql?)
+    #
+    def hash
+      self.class.hash + self.id.hash
+    end
   end
 end
 
